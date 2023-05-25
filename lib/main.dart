@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './questions.dart';
+import './answers.dart';
 
 void main() => runApp(const AnswersApp());
 
@@ -18,7 +19,6 @@ class _AnswersAppState extends State<AnswersApp> {
     setState(() {
       _selectedQuestion++;
     });
-    print(_selectedQuestion);
   }
 
   @override
@@ -35,19 +35,10 @@ class _AnswersAppState extends State<AnswersApp> {
         ),
         body: Column(
           children: <Widget>[
-            Questions(texto: questions[_selectedQuestion]),
-            ElevatedButton(
-              onPressed: _answer,
-              child: const Text('Answer 1'),
-            ),
-            ElevatedButton(
-              onPressed: _answer,
-              child: const Text('Answer 2'),
-            ),
-            ElevatedButton(
-              onPressed: _answer,
-              child: const Text('Answer 3'),
-            ),
+            Questions(text: questions[_selectedQuestion]),
+            Answers(text: 'Answer 1', onSelected: _answer),
+            Answers(text: 'Answer 2', onSelected: _answer),
+            Answers(text: 'Answer 3', onSelected: _answer)
           ],
         )
       ),
