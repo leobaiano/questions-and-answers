@@ -24,7 +24,7 @@ class _AnswersAppState extends State<AnswersApp> {
     },
   ];
   void _answer() {
-    if(isQuestionSelected) {
+    if (isQuestionSelected) {
       setState(() {
         _selectedQuestion++;
       });
@@ -59,7 +59,12 @@ class _AnswersAppState extends State<AnswersApp> {
                     ...answersWidgets
                   ],
                 )
-              : null),
+              : const Center(
+                  child: Text(
+                    'Parabéns',
+                    style: TextStyle(fontSize: 20)
+                  ),
+                )),
     );
   }
 }
