@@ -22,7 +22,7 @@ class _AnswersAppState extends State<AnswersApp> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, Object>>  questions = [
+    final List<Map<String, Object>> questions = [
       {
         'question': 'What is your favorite color?',
         'answers': ['Blue', 'Red', 'Pink']
@@ -33,10 +33,10 @@ class _AnswersAppState extends State<AnswersApp> {
       },
     ];
 
-    List<Widget> answers = [];
-    for(var textAnswer in questions[_selectedQuestion].cast()['answers']) {
-      answers.add(Answers(text: textAnswer, onSelected: _answer));
-    }
+    List<String> answers = questions[_selectedQuestion].cast()['answers'];
+    List<Widget> answersWidgets = answers
+        .map((text) => Answers(text: text, onSelected: _answer))
+        .toList();
 
     return MaterialApp(
       home: Scaffold(
@@ -45,8 +45,9 @@ class _AnswersAppState extends State<AnswersApp> {
           ),
           body: Column(
             children: <Widget>[
-              Questions(text: questions[_selectedQuestion]['question'].toString()),
-              ...answers
+              Questions(
+                  text: questions[_selectedQuestion]['question'].toString()),
+              ...answersWidgets
             ],
           )),
     );
