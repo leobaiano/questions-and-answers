@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import './questions.dart';
 
-void main() => runApp(AnswersApp());
+void main() => runApp(const AnswersApp());
 
 class AnswersApp extends StatefulWidget {
+  const AnswersApp({super.key});
+
 
   @override
   State<AnswersApp> createState() => _AnswersAppState();
@@ -35,16 +37,16 @@ class _AnswersAppState extends State<AnswersApp> {
           children: <Widget>[
             Questions(texto: questions[_selectedQuestion]),
             ElevatedButton(
-              child: Text('Answer 1'),
               onPressed: _answer,
+              child: const Text('Answer 1'),
             ),
             ElevatedButton(
-              child: Text('Answer 2'),
               onPressed: _answer,
+              child: const Text('Answer 2'),
             ),
             ElevatedButton(
-              child: Text('Answer 3'),
               onPressed: _answer,
+              child: const Text('Answer 3'),
             ),
           ],
         )
