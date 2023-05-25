@@ -13,27 +13,34 @@ class AnswersApp extends StatefulWidget {
 
 class _AnswersAppState extends State<AnswersApp> {
   var _selectedQuestion = 0;
-
+  final _questions = const [
+    {
+      'question': 'What is your favorite color?',
+      'answers': ['Blue', 'Red', 'Pink']
+    },
+    {
+      'question': 'What is your favorite animal?',
+      'answers': ['Elephant', 'Snake', 'Cat']
+    },
+  ];
   void _answer() {
-    setState(() {
-      _selectedQuestion++;
-    });
+    if(isQuestionSelected) {
+      setState(() {
+        _selectedQuestion++;
+      });
+    }
+  }
+
+  bool get isQuestionSelected {
+    return _selectedQuestion < _questions.length;
   }
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, Object>> questions = [
-      {
-        'question': 'What is your favorite color?',
-        'answers': ['Blue', 'Red', 'Pink']
-      },
-      {
-        'question': 'What is your favorite animal?',
-        'answers': ['Elephant', 'Snake', 'Cat']
-      },
-    ];
+    List<String> answers = isQuestionSelected
+        ? _questions[_selectedQuestion].cast()['answers']
+        : [];
 
-    List<String> answers = questions[_selectedQuestion].cast()['answers'];
     List<Widget> answersWidgets = answers
         .map((text) => Answers(text: text, onSelected: _answer))
         .toList();
@@ -43,13 +50,16 @@ class _AnswersAppState extends State<AnswersApp> {
           appBar: AppBar(
             title: const Text("Questions"),
           ),
-          body: Column(
-            children: <Widget>[
-              Questions(
-                  text: questions[_selectedQuestion]['question'].toString()),
-              ...answersWidgets
-            ],
-          )),
+          body: isQuestionSelected
+              ? Column(
+                  children: <Widget>[
+                    Questions(
+                        text: _questions[_selectedQuestion]['question']
+                            .toString()),
+                    ...answersWidgets
+                  ],
+                )
+              : null),
     );
   }
 }
