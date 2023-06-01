@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:questions_and_answers/result.dart';
 import './questions.dart';
 import './answers.dart';
+import './result.dart';
 
 void main() => runApp(const AnswersApp());
 
@@ -59,12 +61,7 @@ class _AnswersAppState extends State<AnswersApp> {
                     ...answersWidgets
                   ],
                 )
-              : const Center(
-                  child: Text(
-                    'Parabéns',
-                    style: TextStyle(fontSize: 20)
-                  ),
-                )),
-    );
+              : const Result(),
+    ));
   }
 }
