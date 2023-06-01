@@ -14,6 +14,7 @@ class AnswersApp extends StatefulWidget {
 
 class _AnswersAppState extends State<AnswersApp> {
   var _selectedQuestion = 0;
+  var _totalValue = 0;
   final _questions = const [
     {
       'question': 'What is your favorite color?',
@@ -32,10 +33,11 @@ class _AnswersAppState extends State<AnswersApp> {
       ]
     },
   ];
-  void _answer() {
+  void _answer(int value) {
     if (isQuestionSelected) {
       setState(() {
         _selectedQuestion++;
+        _totalValue += value;
       });
     }
   }
