@@ -17,11 +17,19 @@ class _AnswersAppState extends State<AnswersApp> {
   final _questions = const [
     {
       'question': 'What is your favorite color?',
-      'answers': ['Blue', 'Red', 'Pink']
+      'answers': [
+        {'text': 'Blue', 'value': 1},
+        {'text': 'Red', 'value': 2},
+        {'text': 'Pink', 'value': 3},
+      ]
     },
     {
       'question': 'What is your favorite animal?',
-      'answers': ['Elephant', 'Snake', 'Cat']
+      'answers': [
+        {'text': 'Elephant', 'value': 1},
+        {'text': 'Snake', 'value': 2},
+        {'text': 'Cat', 'value': 3},
+      ]
     },
   ];
   void _answer() {
@@ -32,20 +40,24 @@ class _AnswersAppState extends State<AnswersApp> {
     }
   }
 
-    bool get isQuestionSelected {
+  bool get isQuestionSelected {
     return _selectedQuestion < _questions.length;
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: const Text("Questions"),
-          ),
-          body: isQuestionSelected
-              ? Quiz(questions: _questions, selectedQuestion: _selectedQuestion, answer: _answer,)
-              : const Result(),
+        home: Scaffold(
+      appBar: AppBar(
+        title: const Text("Questions"),
+      ),
+      body: isQuestionSelected
+          ? Quiz(
+              questions: _questions,
+              selectedQuestion: _selectedQuestion,
+              answer: _answer,
+            )
+          : const Result(),
     ));
   }
 }

@@ -4,7 +4,7 @@ class Answers extends StatelessWidget {
   final String text;
   final void Function() onSelected;
 
-  Answers({super.key, required this.text, required this.onSelected});
+  const Answers({super.key, required this.text, required this.onSelected});
 
   @override
   Widget build(BuildContext context) {
