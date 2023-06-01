@@ -59,7 +59,7 @@ class _AnswersAppState extends State<AnswersApp> {
               selectedQuestion: _selectedQuestion,
               answer: _answer,
             )
-          : const Result(),
+          : Result(value: _totalValue,),
     ));
   }
 }

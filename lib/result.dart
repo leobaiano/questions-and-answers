@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
-  const Result({super.key});
+  final int value;
+
+  const Result({super.key, required this.value});
+
+  String get textResult {
+    if (value < 3) {
+      return 'Show!';
+    } else {
+      return 'Success!';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Parabéns!', style: TextStyle(fontSize: 20)),
+    return Center(
+      child: Text(
+        textResult,
+        style: TextStyle(fontSize: 20),
+      ),
     );
   }
 }
